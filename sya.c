@@ -32,6 +32,10 @@ error_return sya(char *input, vari *var) {
     //increment counter when the current char is a left end or right end parenthese
     parenthesisCount += (input[length] == '(');
     parenthesisCount -= (input[length] == ')');
+
+    if(parenthesisCount < 0){
+      return error = -3;
+    }
   }
 
   
@@ -53,7 +57,7 @@ error_return sya(char *input, vari *var) {
   __MALLOC_CHECK(bufferOper, error);
 
 
-  int8_t type[length+1];
+  int8_t *type = calloc(length + 1, sizeof(*type));
   for(int l = 0; input[l]; ++l){
     type[l] = checkType(input[l]);
 
@@ -192,7 +196,7 @@ error_return checkNumbers(char *input) {
 }
 
 
-//check if the two chars together make an operator 
+//check if the current buffer + the next char is an operator
 int checkOperator(char *a, char b) {
   uint8_t length = strlen(a);
   char buffer[length + 3];
@@ -251,11 +255,4 @@ int8_t checkType(char a) {
   default:
     return -1;
   }
-}
-
-
-//checks if = and == are in the same spot, relies on strchr and strstr to
-//linearlly check from the beginning of the string
-int8_t isAssign(char *input) {
-  return (strchr(input, '=') == (strstr(input, "=="))) ? 0 : 1;
 }

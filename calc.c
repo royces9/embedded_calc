@@ -6,7 +6,6 @@
 
 int main(void) {
   char input[128];
-  //char *input = NULL;
   error_return error = 0;
   
   //initialize variable struct
