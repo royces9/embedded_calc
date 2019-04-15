@@ -188,7 +188,7 @@ void errorReport(error_return error) {
 //check if the string is a number/variable
 error_return checkNumbers(char *input) {
   for(int i = 0; i  < strlen(input); ++i) {
-    if(input[i] < '0' && input[i] != '.' || input[i] > '9' || !input[i]) {
+	  if(((input[i] < '0') && (input[i] != '.')) || (input[i] > '9') || (!input[i])) {
       return 0;
     }
   }
