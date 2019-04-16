@@ -2,6 +2,17 @@
 
 #include "keypad.h"
 
+#ifndef ROW_START
+#endif
+
+#ifndef COL_START
+#endif
+
+#ifndef ROW_COUNT
+#endif
+
+#ifndef COL_COUNT
+#endif
 
 char keypad[12] = {'1', '2', '3',
 		   '4', '5', '6',
@@ -9,31 +20,27 @@ char keypad[12] = {'1', '2', '3',
 		   '+', '0', 0};
 
 
+
 char get_key(void) {
 	int col = -1;
 
 	do {
-		for(int i = 0; (col < 0) && i < 3; ++i) {
-			if(digitalRead(i + 26) == LOW)
+		for(int i = 0; (col < 0) && i < COL_COUNT; ++i) {
+			if(digitalRead(i + COL_START) == LOW)
 				col = i;
 		}
 	} while(col < 0);
 
-	pinMode(col, OUTPUT);
-	digitalWrite(col, LOW);
-
 
 	int row = -1;
-	for(int i = 0; (row < 0) && i < 4; ++i) {
-		digitalWrite(i + 22, HIGH);
+	for(int i = 0; (row < 0) && i < ROW_COUNT; ++i) {
+		digitalWrite(i + ROW_START, HIGH);
 
-		if(digitalRead(col + 26) == HIGH)
+		if(digitalRead(col + COL_START) == HIGH)
 			row = i;
 
-		digitalWrite(i + 22, LOW);
+		digitalWrite(i + ROW_START, LOW);
 	}
-
-	pinMode(col, INPUT_PULLUP);
 
 	int ind = (row) * 3 + (col);
 

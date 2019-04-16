@@ -17,16 +17,16 @@ void setup() {
 	var = newVari();
 
 	//rows
-	for(int i = 22; i < 26; ++i) {
-		pinMode(i, OUTPUT);
+	for(int i = 0; i < ROW_COUNT; ++i) {
+		pinMode(i + ROW_START, OUTPUT);
 	}
 
 	pinMode(41, OUTPUT);
 	digitalWrite(41, LOW);
 
 	//columns
-	for(int i = 26; i < 29; ++i) {
-		pinMode(i, INPUT_PULLUP);
+	for(int i = 0; i < COL_COUNT; ++i) {
+		pinMode(i + COL_START, INPUT_PULLUP);
 	}
 
 
@@ -61,5 +61,5 @@ void loop() {
 		}
 	}
 	for(int i = 0;i < 128; ++i)
-		count[i] = 0;
+		input[i] = 0;
 }
