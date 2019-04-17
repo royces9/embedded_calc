@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include "pins.h"
 #include "keypad.h"
 
 #ifndef ROW_START

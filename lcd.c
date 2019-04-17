@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins.h"
 #include "lcd.h"
 
 char disp_0[] = {1, 1, 1, 1, 1, 1, 0, 0};
@@ -44,15 +45,15 @@ void lcd(int a) {
 
 	for(int i = 0; i < 8; ++i) {
 		if(ssd[a][i])
-			digitalWrite(PORT + i, HIGH);
+			digitalWrite(LCD_START + i, HIGH);
 		else
-			digitalWrite(PORT + i, LOW);
+			digitalWrite(LCD_START + i, LOW);
 	}
 }
 
 
 void turn_off(void) {
 	for(int i = 0; i < 8; ++i) {
-		digitalWrite(PORT + i, LOW);
+		digitalWrite(LCD_START + i, LOW);
 	}
 }

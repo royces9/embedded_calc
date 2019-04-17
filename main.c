@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "pins.h"
 #include "lcd.h"
 #include "keypad.h"
 #include "stack.h"
