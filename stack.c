@@ -33,7 +33,6 @@ operatorStruct popch(operatorStack *st) {
     out = st->stk[st->top--];
 
   } else {
-    out.operator[0] = '\0';
     out.argNo = 0;
   }
 
@@ -42,14 +41,12 @@ operatorStruct popch(operatorStack *st) {
 
 
 //initialize operatorStruct
-operatorStruct initOperatorStruct(const char *operator, uint8_t argNo, uint8_t precedence, uint8_t enumeration){
+operatorStruct initOperatorStruct(uint8_t argNo, uint8_t precedence, uint8_t _enum){
   operatorStruct out;
-
-  strcpy(out.operator, operator);
 
   out.precedence = precedence;
   out.argNo = argNo;
-  out.enumeration = enumeration;
+  out._enum = _enum;
 
   return out;
 }

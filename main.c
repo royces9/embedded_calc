@@ -55,7 +55,7 @@ void loop() {
 
 		} else { //if the error is less than -1, prints an error code
 			digitalWrite(41, HIGH);
-			errorReport(error);
+			//errorReport(error);
 			lcd(15);
 			delay(500);
 			digitalWrite(41, LOW);
