@@ -17,6 +17,7 @@ char disp_b[] = {0, 0, 1, 1, 1, 1, 1, 0};
 char disp_c[] = {0, 0, 0, 1, 1, 0, 1, 0};
 char disp_d[] = {0, 1, 1, 1, 1, 0, 1, 0};
 char disp_e[] =  {1, 0, 0, 1, 1, 1, 1, 0};
+char disp_f[] = {1, 0, 0, 1, 0, 1, 1, 0};
 char disp_dp[] = {0, 0, 0, 0, 0, 0, 0, 1};
 
 char *ssd[] = {
@@ -35,13 +36,14 @@ char *ssd[] = {
 	       disp_c,
 	       disp_d,
 	       disp_e,
+	       disp_f,
 	       disp_dp
 };
 
 
 void lcd(int a) {
-	if(a > 15)
-		a = 15;
+	if(a > 16)
+		a = 16;
 
 	for(int i = 0; i < 8; ++i) {
 		if(ssd[a][i])
